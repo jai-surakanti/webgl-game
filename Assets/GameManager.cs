@@ -7,6 +7,7 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager instance;
     public GameObject _gameOverCanvas;
+    public GameObject _pauseGameCanvas;
 
     [DllImport("__Internal")]
     private static extern void EndGame(int userId, int score);
@@ -37,5 +38,19 @@ public class GameManager : MonoBehaviour
         #if UNITY_WEBGL && !UNITY_EDITOR
             EndGame(1, 25);
         #endif
+    }
+
+    public void PauseFromJS()
+    {
+        Debug.Log("Game paused from JS.");
+        _pauseGameCanvas.SetActive(true);
+        Time.timeScale = 0f;
+    }
+
+    public void ResumeGame()
+    {
+        Debug.Log("Game resumed.");
+        _pauseGameCanvas.SetActive(false);
+        Time.timeScale = 1f;
     }
 }

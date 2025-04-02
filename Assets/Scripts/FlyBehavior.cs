@@ -11,6 +11,7 @@ public class FlyBehavior : MonoBehaviour
     void Start()
     {
         _rb = GetComponent<Rigidbody2D>();
+        _rb.gravityScale = 0f; // ✨ No gravity!
     }
 
     // Update is called once per frame
@@ -19,6 +20,10 @@ public class FlyBehavior : MonoBehaviour
         if (Keyboard.current.spaceKey.wasPressedThisFrame || IsTouchInput())
         {
             _rb.linearVelocity = Vector2.up * _velocity;
+        }
+        else
+        {
+            _rb.linearVelocity = Vector2.zero; // Prevent falling
         }
     }
 

@@ -1,5 +1,4 @@
 mergeInto(LibraryManager.library, {
-
   EndGame: function (userId, score) {
     if (window.webkit && window.webkit.messageHandlers && window.webkit.messageHandlers.actionCompleted) {
       window.webkit.messageHandlers.actionCompleted.postMessage({
@@ -14,5 +13,5 @@ mergeInto(LibraryManager.library, {
     } else {
       console.warn("WKWebView message handler is not available.");
     }
-  },
+  }
 });
